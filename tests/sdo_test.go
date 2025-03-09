@@ -8,7 +8,7 @@ import (
 )
 
 func TestIndicator(t *testing.T) {
-	i := stix.NewIndicator(
+	indicator := stix.NewIndicator(
 		"aaa",
 		stix.CommonSDOOptions(
 			stix.WithConfidence(80),
@@ -25,7 +25,7 @@ func TestIndicator(t *testing.T) {
 		},
 	)
 
-	if err := i.Validate(); err != nil {
+	if err := indicator.Validate(); err != nil {
 		t.Errorf("Struct does not validate.: %#v", err.Error())
 	}
 }
