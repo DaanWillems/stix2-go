@@ -13,7 +13,7 @@ type Relationship struct {
 	Description      string    `json:"description"`
 	SourceRef        string    `json:"source_ref" validate:"required"`
 	TargetRef        string    `json:"target_ref" validate:"required"`
-	StartTime        time.Time `json:"start_time" validate:"required"`
+	StartTime        time.Time `json:"start_time"`
 	StopTime         time.Time `json:"stop_time"`
 }
 
