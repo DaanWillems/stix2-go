@@ -11,11 +11,11 @@ type Indicator struct {
 	SDO             `validate:"dive"`
 	Name            string    `json:"name" validate:"required"`
 	Description     string    `json:"description" validate:"required"`
-	IndicatorTypes  []string  `json:"indicator_types"`
+	IndicatorTypes  []string  `json:"indicator_types" validate:"required"`
 	Pattern         string    `json:"pattern" validate:"required"`
-	PatternType     string    `json:"pattern_type"`
+	PatternType     string    `json:"pattern_type" validate:"required,oneof=stix snort yara"`
 	PatternVersion  string    `json:"pattern_version"`
-	ValidFrom       time.Time `json:"valid_from" `
+	ValidFrom       time.Time `json:"valid_from" validate:"required"`
 	ValidUntil      time.Time `json:"valid_until"`
 	KillChainPhases []string  `json:"kill_chain_phases"`
 }
@@ -121,17 +121,3 @@ func NewIndicator(id string, sdoOptions []SDOOption, indicatorOptions []Indicato
 
 	return indicator
 }
-
-// Type               string              `json:"type" validate:"required"`
-// SpecVersion        string              `json:"spec_version" validate:"required"`
-// ID                 string              `json:"id" validate:"required"`
-// CreatedByRef       bool                `json:"created_by_ref"`
-// Created            time.Time           `json:"created" `
-// Modified           time.Time           `json:"modified"`
-// Revoked            bool                `json:"revoked"`
-// Labels             []string            `json:"labels"`
-// Confidence         int                 `json:"confidence"`
-// Lang               string              `json:"lang"`
-// ExternalReferences []ExternalReference `json:"external_references"`
-// ObjectMarkingRefs  []string            `json:"object_marking_refs"`
-// GranularMarkings   []string            `json:"granular_markings"`

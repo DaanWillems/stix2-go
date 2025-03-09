@@ -2,7 +2,7 @@ package stix
 
 import "time"
 
-type SDO struct {
+type SRO struct {
 	Type               string              `json:"type" validate:"required"`
 	SpecVersion        string              `json:"spec_version" validate:"required"`
 	ID                 string              `json:"id" validate:"required"`
@@ -18,81 +18,81 @@ type SDO struct {
 	GranularMarkings   []string            `json:"granular_markings"`
 }
 
-// Common SDO option functions
-type SDOOption func(*SDO)
+// Common SRO option functions
+type SROOption func(*SRO)
 
-func WithSpecVersion(version string) SDOOption {
-	return func(s *SDO) {
+func WithSROSpecVersion(version string) SROOption {
+	return func(s *SRO) {
 		s.SpecVersion = version
 	}
 }
 
-func WithCreatedByRef(ref bool) SDOOption {
-	return func(s *SDO) {
+func WithSROCreatedByRef(ref bool) SROOption {
+	return func(s *SRO) {
 		s.CreatedByRef = ref
 	}
 }
 
-func WithCreated(t time.Time) SDOOption {
-	return func(s *SDO) {
+func WithSROCreated(t time.Time) SROOption {
+	return func(s *SRO) {
 		s.Created = t
 	}
 }
 
-func WithModified(t time.Time) SDOOption {
-	return func(s *SDO) {
+func WithSROModified(t time.Time) SROOption {
+	return func(s *SRO) {
 		s.Modified = t
 	}
 }
 
-func WithRevoked(revoked bool) SDOOption {
-	return func(s *SDO) {
+func WithSRORevoked(revoked bool) SROOption {
+	return func(s *SRO) {
 		s.Revoked = revoked
 	}
 }
 
-func WithLabels(labels []string) SDOOption {
-	return func(s *SDO) {
+func WithSROLabels(labels []string) SROOption {
+	return func(s *SRO) {
 		s.Labels = labels
 	}
 }
 
-func WithConfidence(confidence int) SDOOption {
-	return func(s *SDO) {
+func WithSROConfidence(confidence int) SROOption {
+	return func(s *SRO) {
 		s.Confidence = confidence
 	}
 }
 
-func WithLang(lang string) SDOOption {
-	return func(s *SDO) {
+func WithSROLang(lang string) SROOption {
+	return func(s *SRO) {
 		s.Lang = lang
 	}
 }
 
-func WithExternalReferences(refs []ExternalReference) SDOOption {
-	return func(s *SDO) {
+func WithSROExternalReferences(refs []ExternalReference) SROOption {
+	return func(s *SRO) {
 		s.ExternalReferences = refs
 	}
 }
 
-func WithObjectMarkingRefs(refs []string) SDOOption {
-	return func(s *SDO) {
+func WithSROObjectMarkingRefs(refs []string) SROOption {
+	return func(s *SRO) {
 		s.ObjectMarkingRefs = refs
 	}
 }
 
-func WithGranularMarkings(markings []string) SDOOption {
-	return func(s *SDO) {
+func WithSROGranularMarkings(markings []string) SROOption {
+	return func(s *SRO) {
 		s.GranularMarkings = markings
 	}
 }
 
-func applySDOOptions(sdo *SDO, options []SDOOption) {
+func applySROOptions(SRO *SRO, options []SROOption) {
 	for _, option := range options {
-		option(sdo)
+		option(SRO)
 	}
 }
 
-func CommonSDOOptions(options ...SDOOption) []SDOOption {
+func CommonSROOptions(options ...SROOption) []SROOption {
 	return options
 }
