@@ -19,6 +19,10 @@ func (grouping *Grouping) Validate() error {
 	return validator.Struct(grouping)
 }
 
+func (grouping *Grouping) GenerateID() string {
+	return "grouping--" + v5UUID(grouping.Name+grouping.Description)
+}
+
 type GroupingOption func(*Grouping)
 
 func WithGroupingName(name string) GroupingOption {
@@ -45,13 +49,12 @@ func WithObjectRefs(objectRefs []string) GroupingOption {
 	}
 }
 
-func NewGrouping(id string, sdoOptions []SDOOption, groupingOptions []GroupingOption) *Grouping {
+func NewGrouping(sdoOptions []SDOOption, groupingOptions []GroupingOption) *Grouping {
 	now := time.Now()
 
 	// Create base SDO with required fields
 	sdo := SDO{
 		Type:        "groupinh",
-		ID:          id,
 		SpecVersion: "2.1", // Default version
 		Created:     now,
 		Modified:    now,

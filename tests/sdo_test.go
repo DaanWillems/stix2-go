@@ -9,7 +9,6 @@ import (
 
 func TestIndicator(t *testing.T) {
 	indicator := stix.NewIndicator(
-		"aaa",
 		stix.CommonSDOOptions(
 			stix.WithConfidence(80),
 			stix.WithLang("English"),
@@ -24,6 +23,11 @@ func TestIndicator(t *testing.T) {
 			stix.WithIndicatorTypes([]string{"ipv4"}),
 		},
 	)
+	indicator.ID = indicator.GenerateID()
+
+	if indicator.ID != "indicator--b1517d20-54bb-5706-b192-3823c4a68fa9" {
+		t.Errorf("ID does not match expectation. Got: %v", indicator.ID)
+	}
 
 	if err := indicator.Validate(); err != nil {
 		t.Errorf("Struct does not validate.: %#v", err.Error())
@@ -32,7 +36,6 @@ func TestIndicator(t *testing.T) {
 
 func TestThreatActor(t *testing.T) {
 	threatActor := stix.NewThreatActor(
-		"threat-actor--8e2e2d2b-17d4-4cbf-938f-98ee46b3cd3f",
 		stix.CommonSDOOptions(
 			stix.WithSpecVersion("2.1"),
 			stix.WithConfidence(90),
@@ -52,6 +55,12 @@ func TestThreatActor(t *testing.T) {
 		},
 	)
 
+	threatActor.ID = threatActor.GenerateID()
+
+	if threatActor.ID != "threat-actor--19ef174d-85ca-5520-a7a4-d18c73f86c3a" {
+		t.Errorf("ID does not match expectation. Got: %v", threatActor.ID)
+	}
+
 	if err := threatActor.Validate(); err != nil {
 		t.Errorf("Struct does not validate.: %#v", err.Error())
 	}
@@ -59,13 +68,14 @@ func TestThreatActor(t *testing.T) {
 
 func TestGrouping(t *testing.T) {
 	grouping := stix.NewGrouping(
-		"threat-actor--8e2e2d2b-17d4-4cbf-938f-98ee46b3cd3f",
 		stix.CommonSDOOptions(
 			stix.WithSpecVersion("2.1"),
 			stix.WithConfidence(90),
 			stix.WithLabels([]string{"apt", "state-sponsored"}),
 		),
 		[]stix.GroupingOption{
+			stix.WithGroupingName("Group"),
+			stix.WithGroupingDescription("Group Desc"),
 			stix.WithContext([]string{
 				"a",
 				"b",
@@ -76,7 +86,37 @@ func TestGrouping(t *testing.T) {
 		},
 	)
 
+	grouping.ID = grouping.GenerateID()
+	if grouping.ID != "grouping--18d8abf6-dc95-5359-8ed4-c65febe3250f" {
+		t.Errorf("ID does not match expectation. Got: %v", grouping.ID)
+	}
 	if err := grouping.Validate(); err != nil {
 		t.Errorf("Struct does not validate.: %#v", err.Error())
 	}
+
+	grouping2 := stix.NewGrouping(
+		stix.CommonSDOOptions(
+			stix.WithSpecVersion("2.1"),
+			stix.WithConfidence(90),
+			stix.WithLabels([]string{"apt", "state-sponsored"}),
+		),
+		[]stix.GroupingOption{
+			stix.WithGroupingName("Group2"),
+			stix.WithGroupingDescription("Group2 Desc"),
+			stix.WithContext([]string{
+				"a",
+				"b",
+			}),
+			stix.WithObjectRefs([]string{
+				"a",
+			}),
+		},
+	)
+
+	grouping2.ID = grouping2.GenerateID()
+
+	if grouping.ID == grouping2.ID {
+		t.Error("ID's should be unique")
+	}
+
 }

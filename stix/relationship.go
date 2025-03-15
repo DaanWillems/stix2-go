@@ -9,12 +9,16 @@ import (
 
 type Relationship struct {
 	SRO              `validate:"dive"`
-	RelationshipType string    `json:"relationship_type" validate:"required"`
+	RelationshipType string    `json:"relationship_type" validate:"required"` //TODO: Enforce type
 	Description      string    `json:"description"`
 	SourceRef        string    `json:"source_ref" validate:"required"`
 	TargetRef        string    `json:"target_ref" validate:"required"`
 	StartTime        time.Time `json:"start_time"`
 	StopTime         time.Time `json:"stop_time"`
+}
+
+func (relationship *Relationship) GenerateID() string {
+	return "relationship--" + v5UUID(relationship.SourceRef+relationship.Description+relationship.TargetRef)
 }
 
 func (Relationship *Relationship) Validate() error {
@@ -73,13 +77,12 @@ func WithStopTime(stopTime time.Time) RelationshipOption {
 	}
 }
 
-func NewRelationship(id string, sroOptions []SROOption, RelationshipOptions []RelationshipOption) *Relationship {
+func NewRelationship(sroOptions []SROOption, RelationshipOptions []RelationshipOption) *Relationship {
 	now := time.Now()
 
 	// Create base SDO with required fields
 	sro := SRO{
 		Type:        "Relationship",
-		ID:          id,
 		SpecVersion: "2.1", // Default version
 		Created:     now,
 		Modified:    now,

@@ -9,7 +9,6 @@ import (
 
 func TestRelationship(t *testing.T) {
 	i := stix.NewRelationship(
-		"aaa",
 		stix.CommonSROOptions(
 			stix.WithSROConfidence(80),
 			stix.WithSROLang("English"),
@@ -24,6 +23,8 @@ func TestRelationship(t *testing.T) {
 			stix.WithStopTime(time.Date(2025, 3, 7, 0, 0, 0, 0, time.UTC)),
 		},
 	)
+
+	i.ID = i.GenerateID()
 
 	if err := i.Validate(); err != nil {
 		t.Errorf("Struct does not validate.: %#v", err.Error())

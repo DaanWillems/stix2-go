@@ -21,6 +21,12 @@ type SDO struct {
 // Common SDO option functions
 type SDOOption func(*SDO)
 
+func WithID(id string) SDOOption {
+	return func(s *SDO) {
+		s.ID = id
+	}
+}
+
 func WithSpecVersion(version string) SDOOption {
 	return func(s *SDO) {
 		s.SpecVersion = version

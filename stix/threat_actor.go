@@ -23,6 +23,10 @@ type ThreatActor struct {
 	PersonalMotivation  []string  `json:"personal_motivation,omitempty"`
 }
 
+func (threatActor *ThreatActor) GenerateID() string {
+	return "threat-actor--" + v5UUID(threatActor.Name+threatActor.Description)
+}
+
 func (threatActor *ThreatActor) Validate() error {
 	validator := validator.New()
 	return validator.Struct(threatActor)
@@ -109,13 +113,12 @@ func WithPersonalMotivation(motivations []string) ThreatActorOption {
 }
 
 // NewThreatActor creates a new ThreatActor with the given ID and options
-func NewThreatActor(id string, sdoOptions []SDOOption, threatActorOptions []ThreatActorOption) *ThreatActor {
+func NewThreatActor(sdoOptions []SDOOption, threatActorOptions []ThreatActorOption) *ThreatActor {
 	now := time.Now()
 
 	// Create base SDO with required fields
 	sdo := SDO{
 		Type:        "threat-actor",
-		ID:          id,
 		SpecVersion: "2.1", // Default version
 		Created:     now,
 		Modified:    now,

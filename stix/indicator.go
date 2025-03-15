@@ -25,6 +25,10 @@ func (indicator *Indicator) Validate() error {
 	return validator.Struct(indicator)
 }
 
+func (indicator *Indicator) GenerateID() string {
+	return "indicator--" + v5UUID(indicator.Name+indicator.Description+indicator.Pattern+indicator.PatternType)
+}
+
 // FromJSONBytes reads JSON from a byte slice into the struct
 func (indicator *Indicator) FromJSONBytes(data []byte) error {
 	if err := json.Unmarshal(data, indicator); err != nil {
@@ -94,13 +98,12 @@ func WithKillChainPhases(phases []string) IndicatorOption {
 	}
 }
 
-func NewIndicator(id string, sdoOptions []SDOOption, indicatorOptions []IndicatorOption) *Indicator {
+func NewIndicator(sdoOptions []SDOOption, indicatorOptions []IndicatorOption) *Indicator {
 	now := time.Now()
 
 	// Create base SDO with required fields
 	sdo := SDO{
 		Type:        "indicator",
-		ID:          id,
 		SpecVersion: "2.1", // Default version
 		Created:     now,
 		Modified:    now,
