@@ -74,6 +74,27 @@ func WithInfrastructureLastSeen(value time.Time) InfrastructureOption {
 
 
 
+
+func (obj *Infrastructure) GetID() string {
+	return obj.ID
+}
+
+func (obj *Infrastructure) GetType() string {
+	return obj.Type
+}
+
+func (obj *Infrastructure) GetSpecVersion() string {
+	return obj.SpecVersion
+}
+
+func (obj *Infrastructure) GetCreated() time.Time {
+	return obj.Created
+}
+
+func (obj *Infrastructure) GetModified() time.Time {
+	return obj.Modified
+}
+
 func NewInfrastructure(sdoOptions []SDOOption, options []InfrastructureOption) *Infrastructure {
 	now := time.Now()
 

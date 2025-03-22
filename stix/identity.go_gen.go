@@ -68,6 +68,27 @@ func WithIdentityContactInformation(value string) IdentityOption {
 
 
 
+
+func (obj *Identity) GetID() string {
+	return obj.ID
+}
+
+func (obj *Identity) GetType() string {
+	return obj.Type
+}
+
+func (obj *Identity) GetSpecVersion() string {
+	return obj.SpecVersion
+}
+
+func (obj *Identity) GetCreated() time.Time {
+	return obj.Created
+}
+
+func (obj *Identity) GetModified() time.Time {
+	return obj.Modified
+}
+
 func NewIdentity(sdoOptions []SDOOption, options []IdentityOption) *Identity {
 	now := time.Now()
 

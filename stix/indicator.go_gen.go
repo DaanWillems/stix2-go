@@ -86,6 +86,27 @@ func WithIndicatorKillChainPhases(value []string) IndicatorOption {
 
 
 
+
+func (obj *Indicator) GetID() string {
+	return obj.ID
+}
+
+func (obj *Indicator) GetType() string {
+	return obj.Type
+}
+
+func (obj *Indicator) GetSpecVersion() string {
+	return obj.SpecVersion
+}
+
+func (obj *Indicator) GetCreated() time.Time {
+	return obj.Created
+}
+
+func (obj *Indicator) GetModified() time.Time {
+	return obj.Modified
+}
+
 func NewIndicator(sdoOptions []SDOOption, options []IndicatorOption) *Indicator {
 	now := time.Now()
 

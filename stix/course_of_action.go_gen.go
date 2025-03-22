@@ -68,6 +68,27 @@ func WithCourseOfActionActionReference(value ExternalReference) CourseOfActionOp
 
 
 
+
+func (obj *CourseOfAction) GetID() string {
+	return obj.ID
+}
+
+func (obj *CourseOfAction) GetType() string {
+	return obj.Type
+}
+
+func (obj *CourseOfAction) GetSpecVersion() string {
+	return obj.SpecVersion
+}
+
+func (obj *CourseOfAction) GetCreated() time.Time {
+	return obj.Created
+}
+
+func (obj *CourseOfAction) GetModified() time.Time {
+	return obj.Modified
+}
+
 func NewCourseOfAction(sdoOptions []SDOOption, options []CourseOfActionOption) *CourseOfAction {
 	now := time.Now()
 

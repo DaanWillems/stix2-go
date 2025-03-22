@@ -44,6 +44,27 @@ func WithExternalReferenceExternalID(value string) ExternalReferenceOption {
 
 
 
+
+func (obj *ExternalReference) GetID() string {
+	return obj.ID
+}
+
+func (obj *ExternalReference) GetType() string {
+	return obj.Type
+}
+
+func (obj *ExternalReference) GetSpecVersion() string {
+	return obj.SpecVersion
+}
+
+func (obj *ExternalReference) GetCreated() time.Time {
+	return obj.Created
+}
+
+func (obj *ExternalReference) GetModified() time.Time {
+	return obj.Modified
+}
+
 func NewExternalReference(sdoOptions []SDOOption, options []ExternalReferenceOption) *ExternalReference {
 	now := time.Now()
 

@@ -56,6 +56,27 @@ func WithGroupingObjectRefs(value []string) GroupingOption {
 
 
 
+
+func (obj *Grouping) GetID() string {
+	return obj.ID
+}
+
+func (obj *Grouping) GetType() string {
+	return obj.Type
+}
+
+func (obj *Grouping) GetSpecVersion() string {
+	return obj.SpecVersion
+}
+
+func (obj *Grouping) GetCreated() time.Time {
+	return obj.Created
+}
+
+func (obj *Grouping) GetModified() time.Time {
+	return obj.Modified
+}
+
 func NewGrouping(sdoOptions []SDOOption, options []GroupingOption) *Grouping {
 	now := time.Now()
 

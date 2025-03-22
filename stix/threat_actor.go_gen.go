@@ -110,6 +110,27 @@ func WithThreatActorPersonalMotivation(value []string) ThreatActorOption {
 
 
 
+
+func (obj *ThreatActor) GetID() string {
+	return obj.ID
+}
+
+func (obj *ThreatActor) GetType() string {
+	return obj.Type
+}
+
+func (obj *ThreatActor) GetSpecVersion() string {
+	return obj.SpecVersion
+}
+
+func (obj *ThreatActor) GetCreated() time.Time {
+	return obj.Created
+}
+
+func (obj *ThreatActor) GetModified() time.Time {
+	return obj.Modified
+}
+
 func NewThreatActor(sdoOptions []SDOOption, options []ThreatActorOption) *ThreatActor {
 	now := time.Now()
 

@@ -68,6 +68,27 @@ func WithCampaignObjective(value string) CampaignOption {
 
 
 
+
+func (obj *Campaign) GetID() string {
+	return obj.ID
+}
+
+func (obj *Campaign) GetType() string {
+	return obj.Type
+}
+
+func (obj *Campaign) GetSpecVersion() string {
+	return obj.SpecVersion
+}
+
+func (obj *Campaign) GetCreated() time.Time {
+	return obj.Created
+}
+
+func (obj *Campaign) GetModified() time.Time {
+	return obj.Modified
+}
+
 func NewCampaign(sdoOptions []SDOOption, options []CampaignOption) *Campaign {
 	now := time.Now()
 

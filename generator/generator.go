@@ -166,6 +166,27 @@ func With{{$struct}}{{.Name}}(value {{.Type}}) {{$struct}}Option {
 {{end}}
 
 {{if .GenerateNewSDO}}
+
+func (obj *{{.StructName}}) GetID() string {
+	return obj.ID
+}
+
+func (obj *{{.StructName}}) GetType() string {
+	return obj.Type
+}
+
+func (obj *{{.StructName}}) GetSpecVersion() string {
+	return obj.SpecVersion
+}
+
+func (obj *{{.StructName}}) GetCreated() time.Time {
+	return obj.Created
+}
+
+func (obj *{{.StructName}}) GetModified() time.Time {
+	return obj.Modified
+}
+
 func New{{.StructName}}(sdoOptions []SDOOption, options []{{.StructName}}Option) *{{.StructName}} {
 	now := time.Now()
 
