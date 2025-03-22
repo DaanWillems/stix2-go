@@ -1,4 +1,4 @@
-package main
+package stix
 
 import (
 	"testing"

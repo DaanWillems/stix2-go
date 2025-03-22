@@ -1,4 +1,4 @@
-package main
+package stix
 
 //go:generate ./bin/generator $GOFILE sdo
 type ExternalReference struct {
