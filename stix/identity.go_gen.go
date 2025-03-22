@@ -69,6 +69,10 @@ func WithIdentityContactInformation(value string) IdentityOption {
 
 
 
+func (obj *Identity) SetID(id string) {
+	obj.ID = id
+}
+
 func (obj *Identity) GetID() string {
 	return obj.ID
 }

@@ -87,6 +87,10 @@ func WithIndicatorKillChainPhases(value []string) IndicatorOption {
 
 
 
+func (obj *Indicator) SetID(id string) {
+	obj.ID = id
+}
+
 func (obj *Indicator) GetID() string {
 	return obj.ID
 }

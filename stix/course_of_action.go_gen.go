@@ -69,6 +69,10 @@ func WithCourseOfActionActionReference(value ExternalReference) CourseOfActionOp
 
 
 
+func (obj *CourseOfAction) SetID(id string) {
+	obj.ID = id
+}
+
 func (obj *CourseOfAction) GetID() string {
 	return obj.ID
 }

@@ -111,6 +111,10 @@ func WithThreatActorPersonalMotivation(value []string) ThreatActorOption {
 
 
 
+func (obj *ThreatActor) SetID(id string) {
+	obj.ID = id
+}
+
 func (obj *ThreatActor) GetID() string {
 	return obj.ID
 }

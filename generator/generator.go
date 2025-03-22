@@ -167,6 +167,10 @@ func With{{$struct}}{{.Name}}(value {{.Type}}) {{$struct}}Option {
 
 {{if .GenerateNewSDO}}
 
+func (obj *{{.StructName}}) SetID(id string) {
+	obj.ID = id
+}
+
 func (obj *{{.StructName}}) GetID() string {
 	return obj.ID
 }

@@ -3,7 +3,7 @@ package stix
 
 import (
 	"encoding/json"
-	
+	"time"
 	"github.com/go-playground/validator"
 )
 
@@ -55,6 +55,57 @@ func WithAttackPatternKillChainPhases(value []string) AttackPatternOption {
 }
 
 
+
+
+func (obj *AttackPattern) SetID(id string) {
+	obj.ID = id
+}
+
+func (obj *AttackPattern) GetID() string {
+	return obj.ID
+}
+
+func (obj *AttackPattern) GetType() string {
+	return obj.Type
+}
+
+func (obj *AttackPattern) GetSpecVersion() string {
+	return obj.SpecVersion
+}
+
+func (obj *AttackPattern) GetCreated() time.Time {
+	return obj.Created
+}
+
+func (obj *AttackPattern) GetModified() time.Time {
+	return obj.Modified
+}
+
+func NewAttackPattern(sdoOptions []SDOOption, options []AttackPatternOption) *AttackPattern {
+	now := time.Now()
+
+	// Create base SDO with required fields
+	sdo := SDO{
+		Type:        "AttackPattern",
+		SpecVersion: "2.1", // Default version
+		Created:     now,
+		Modified:    now,
+	}
+
+	for _, option := range sdoOptions {
+		option(&sdo)
+	}
+
+	obj := &AttackPattern{
+		SDO: sdo,
+	}
+
+	for _, option := range options {
+		option(obj)
+	}
+
+	return obj
+}
 
 
 

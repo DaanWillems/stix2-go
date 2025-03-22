@@ -57,6 +57,10 @@ func WithGroupingObjectRefs(value []string) GroupingOption {
 
 
 
+func (obj *Grouping) SetID(id string) {
+	obj.ID = id
+}
+
 func (obj *Grouping) GetID() string {
 	return obj.ID
 }

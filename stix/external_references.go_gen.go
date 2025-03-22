@@ -45,6 +45,10 @@ func WithExternalReferenceExternalID(value string) ExternalReferenceOption {
 
 
 
+func (obj *ExternalReference) SetID(id string) {
+	obj.ID = id
+}
+
 func (obj *ExternalReference) GetID() string {
 	return obj.ID
 }

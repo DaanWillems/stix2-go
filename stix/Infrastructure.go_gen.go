@@ -75,6 +75,10 @@ func WithInfrastructureLastSeen(value time.Time) InfrastructureOption {
 
 
 
+func (obj *Infrastructure) SetID(id string) {
+	obj.ID = id
+}
+
 func (obj *Infrastructure) GetID() string {
 	return obj.ID
 }

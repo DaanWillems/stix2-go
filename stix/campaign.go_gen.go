@@ -69,6 +69,10 @@ func WithCampaignObjective(value string) CampaignOption {
 
 
 
+func (obj *Campaign) SetID(id string) {
+	obj.ID = id
+}
+
 func (obj *Campaign) GetID() string {
 	return obj.ID
 }
