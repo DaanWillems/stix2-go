@@ -4,7 +4,7 @@ import (
 	"time"
 )
 
-//go:generate ./bin/generator $GOFILE sro
+//go:generate ../bin/generator $GOFILE sro
 type Relationship struct {
 	SRO         `validate:"dive"`
 	Type        string    `json:"relationship_type" validate:"required"` //TODO: Enforce type

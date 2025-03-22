@@ -1,6 +1,6 @@
 package stix
 
-//go:generate ./bin/generator $GOFILE
+//go:generate ../bin/generator $GOFILE
 type SCO struct {
 	Type              string   `json:"type" validate:"required"`
 	SpecVersion       string   `json:"spec_version,omitempty"`

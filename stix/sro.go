@@ -2,8 +2,8 @@ package stix
 
 import "time"
 
-//go:generate ./bin/generator $GOFILE
-type SDO struct {
+//go:generate ../bin/generator $GOFILE
+type SRO struct {
 	Type               string              `json:"type" validate:"required"`
 	SpecVersion        string              `json:"spec_version" validate:"required"`
 	ID                 string              `json:"id" validate:"required"`
@@ -19,12 +19,12 @@ type SDO struct {
 	GranularMarkings   []string            `json:"granular_markings"`
 }
 
-func applySDOOptions(sdo *SDO, options []SDOOption) {
+func applySROOptions(SRO *SRO, options []SROOption) {
 	for _, option := range options {
-		option(sdo)
+		option(SRO)
 	}
 }
 
-func CommonSDOOptions(options ...SDOOption) []SDOOption {
+func CommonSROOptions(options ...SROOption) []SROOption {
 	return options
 }

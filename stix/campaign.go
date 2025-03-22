@@ -4,7 +4,7 @@ import (
 	"time"
 )
 
-//go:generate ./bin/generator $GOFILE sdo
+//go:generate ../bin/generator $GOFILE sdo
 type Campaign struct {
 	SDO
 	Name        string    `json:"name"`

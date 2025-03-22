@@ -1,6 +1,6 @@
 package stix
 
-//go:generate ./bin/generator $GOFILE sdo
+//go:generate ../bin/generator $GOFILE sdo
 type Grouping struct {
 	SDO
 	Name        string   `json:"name"`

@@ -4,7 +4,7 @@ import (
 	"time"
 )
 
-//go:generate ./bin/generator $GOFILE sdo
+//go:generate ../bin/generator $GOFILE sdo
 type Indicator struct {
 	SDO             `validate:"dive"`
 	Name            string    `json:"name" validate:"required"`

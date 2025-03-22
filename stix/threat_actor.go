@@ -4,7 +4,7 @@ import (
 	"time"
 )
 
-//go:generate ./bin/generator $GOFILE sdo
+//go:generate ../bin/generator $GOFILE sdo
 type ThreatActor struct {
 	SDO                 `json:"sdo,omitempty"`
 	Name                string    `json:"name" validate:"required"`

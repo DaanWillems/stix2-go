@@ -1,6 +1,6 @@
 package stix
 
-//go:generate ./bin/generator $GOFILE
+//go:generate ../bin/generator $GOFILE
 type AttackPattern struct {
 	SDO
 	Name            string   `json:"name"`
