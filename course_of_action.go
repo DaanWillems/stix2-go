@@ -1,5 +1,6 @@
-package stix
+package main
 
+//go:generate ./bin/generator $GOFILE sdo
 type CourseOfAction struct {
 	SDO
 	Name            string            `json:"name"`

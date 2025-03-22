@@ -1,7 +1,10 @@
-package stix
+package main
 
-import "time"
+import (
+	"time"
+)
 
+//go:generate ./bin/generator $GOFILE sdo
 type Campaign struct {
 	SDO
 	Name        string    `json:"name"`
@@ -10,4 +13,8 @@ type Campaign struct {
 	FirstSeen   time.Time `json:"first_seen"`
 	LastSeen    time.Time `json:"last_seen"`
 	Objective   string    `json:"objective"`
+}
+
+func (campaign *Campaign) GenerateID() string {
+	return "campaign--" + v5UUID(campaign.Name+campaign.Description)
 }
